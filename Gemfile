@@ -53,3 +53,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'google-api-client','~> 0.11'
+
+gem 'bcrypt','~> 3.1.7'
