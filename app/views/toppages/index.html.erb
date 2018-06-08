@@ -1,11 +1,21 @@
+<% if logged_in? %>
+<h3 class="text-center">
+  <%= current_user.name %>さんのタイムライン
+</h3>
+
+<!--- タイムライン表示 --->
+ <%= render 'reviews/list',reviews: @reviews %>
+  
+<% else %>
 <div class="row">
   <div class="col-xs-12 col-md-5 jumbotron">
     <h3>アカウントをお持ちの方</h3>
-    <p><a href="#" class="btn btn-primary">ログイン</a></p>
-    
+    <p><%= link_to 'ログイン',login_path,class: 'btn btn-lg btn-primary' %></p>
   </div>
+  
   <div class="col-xs-12 col-md-offset-1 col-md-5 jumbotron">
     <h3>初めてのかた</h3>
     <p><%= link_to '新規登録',signup_path,class: 'btn btn-lg btn-primary' %></p>
   </div>
 </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="text-center">
+  <div class="page-header">
+    <h3>検索</h3>
+    <small>Google Booksから書籍を検索します</small>
+  </div>
+  
+  <%= form_tag(books_path, method: :get,class: 'form-inline') do %>
+  
+    <div class="form-group">
+      <%= text_field_tag :keyword,'', class: 'form-control input-lg',placeholder: '書籍の検索' %>
+    </div>
+    <%= submit_tag '検索',class: 'btn btn-success btn-lg' %>
+  
+  <% end %>
+  
+</div>

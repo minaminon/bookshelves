@@ -7,14 +7,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">書籍共有サービス</a>
+        <a class="navbar-brand" href="/"><span data-text="タイムライン">書籍共有サービス</span></a>
         <p class="navbar-text">Google Booksの書籍情報を共有しよう</p>
       </div>
       
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to '新規登録',signup_path %></li>
-          <li><a href="#">ログイン</a></li>
+          <% if logged_in? %>
+            <li><%= link_to '検索',new_book_path %></li>
+            <li><%= link_to '書籍リスト',current_user %></li>
+            <li><%= link_to 'ログアウト',logout_path,method: :delete %></li>
+          <% else %>
+            <li><%= link_to '検索',new_book_path %></li>
+            <li><%= link_to '新規登録',signup_path %></li>
+            <li><%= link_to 'ログイン',login_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>

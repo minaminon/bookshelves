@@ -1,0 +1,35 @@
+<% if books %>
+  <div class="container">
+    <div class="row">
+      <% books.items.each do |book| %>
+        <div style="jumbotron">
+          <h3 class="header"><%= link_to book.volume_info.title,detail_path(book.id) %></h3>
+           <div class="about">
+            <p>著者:
+            <% Array(book.volume_info.authors).each do |author| %>
+              <%= author +" " %>
+            <% end %>
+            </p>
+            <p>発売日:
+              <%= book.volume_info.published_date %>
+            </p>
+          </div>
+          <div class="content-body">
+            <aside class="col-md-2">
+              <% if book.volume_info.image_links %>
+                <img src="<%= book.volume_info.image_links.small_thumbnail %>">
+              <% end %>
+            </aside>
+            <aside class="col-md-8">
+              <% if book.volume_info.description %>
+                <%= book.volume_info.description.slice(0,200) %>
+              <% end %>
+            </aside>
+            
+          </div>
+          
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<div class="row">
+<% if review_info %>
+  <%= form_tag(review_path(review_info.book_id),method: :delete) do %>
+  <div class="form-group">
+      <div class="col-md-6">
+        <p><label><%= radio_button_tag :status,'want',{:readonly => true} %>ほしい</label></p>
+        <p><label><%= radio_button_tag :status,'read',{:readonly => true} %>よんだ</label></p>
+        <p><label><%= radio_button_tag :status,'stop',{:readonly => true} %>やめた</label></p>
+        <%= submit_tag '削除', class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-6">
+        <%= text_area_tag :content,review_info.content,class: 'form-control',size: 6,rows: 10 %>  
+      </div>
+    </div>
+  <% end %>
+  
+<% else %>
+  <%= form_tag(reviews_path) do %>
+    <div class="form-group">
+      <div class="col-md-6">
+        <p><label><%= radio_button_tag :status,'want' %>ほしい</label></p>
+        <p><label><%= radio_button_tag :status,'read' %>よんだ</label></p>
+        <p><label><%= radio_button_tag :status,'stop' %>やめた</label></p>
+        <%= submit_tag '追加', class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-6">
+        <%= text_area_tag :content,'',class: 'form-control',size: 6,rows: 10 %>  
+      </div>
+      <%= hidden_field_tag :code, book_info.id %>
+    </div>
+  <% end %>
+<% end %>
+</div>

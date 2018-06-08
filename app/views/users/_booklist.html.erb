@@ -1,0 +1,19 @@
+<div class="row">
+  <% viewcount=0 %>
+  <% user.books.each do |book| %>
+    <div class="container">
+      <div class="booklist_block">
+        <div class="header">
+          <%= book.title %>
+        </div>
+        <img src="<%= book.image_url %>">
+      </div>
+    </div>
+    <% viewcount=viewcount+1 %>
+    <% if viewcount >=2 %>
+      </br>
+      <% viewcount=0 %>
+    <% end %>
+      
+  <% end %>
+</div>
