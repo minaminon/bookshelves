@@ -20,4 +20,9 @@
   </aside>
 </div>
 
-<%= render 'reviews/button',book_info: @book_info,review_info: @review%>
+<%= render 'reviews/button',book_info: @book_info,review_info: @review %>
+
+<% if @book_data %>
+  <h3>レビュー一覧</h3>
+  <%= render 'reviews/list',reviews: @book_data.reviews %>
+<% end %>
