@@ -24,9 +24,9 @@ class BooksController < ApplicationController
       redirect_to 'root'
     end
     
-    @book_data=current_user.books.find_by(code: @code)
+    @book_data=Book.find_by(code: @code)
     
-    @review=current_user.reviews.find_by(book_id: @book_data.id) if @book_data
+    @reviews=Review.find_by(book_id: @book_data) if @book_data
     
   end
 end
