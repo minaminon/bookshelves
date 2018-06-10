@@ -2,19 +2,23 @@
   <% books.items.each do |book| %>
     <% book_info=book.volume_info %>
     
-    <div id="search_record" class="clearfix">
-      <div class="header"><%= link_to book_info.title,detail_path(book.id) %></div>
-      <aside class="thumb">
-        <img src="<%= book_info.image_links ? book_info.image_links.small_thumbnail : '' %>"
-      </aside>
-      <aside class="description">
-        <p>著者: <% Array(book_info.authors).each do |author| %>
+    <div class="panel panel-default" class="clearfix">
+      <div class="panel-heading"><%= link_to book_info.title,detail_path(book.id) %></div>
+    <div class="panel-body">  
+      <div class="thumb">
+        <img src="<%= book_info.image_links ? book_info.image_links.small_thumbnail : '' %>">
+      </div>
+      <div class="description">
+        著者: <% Array(book_info.authors).each do |author| %>
           <%= author+'' %>
-          <% end %>
-          </p>
-        <p>発売日:<%= book_info.published_date ? book_info.published_date : '' %></p>
-      </aside>
+          <% end %></br>
+        発売日:<%= book_info.published_date ? book_info.published_date : '' %></br>
+        説明</br>
+        <div class="well well-sm"><%= book_info.description ? book_info.description.slice(0,50) : '説明はありません' %></div>
+      </div>
+    </div>
     </div>
     
   <% end %>
+  
 <% end %>

@@ -11,8 +11,8 @@ class BooksController < ApplicationController
   def index
     books=Google::Apis::BooksV1::BooksService.new
     @keyword=params[:keyword]
-    @book_list=books.list_volumes(@keyword)
-    
+    @book_lists=books.list_volumes(@keyword)
+    @book_list=@book_lists #本当はここでページネーションしたい
   end
   
   def detail
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     
     @book_data=Book.find_by(code: @code)
     
-    @reviews=Review.find_by(book_id: @book_data) if @book_data
+    @reviews=current_user.reviews.find_by(book_id: @book_data)
     
   end
 end

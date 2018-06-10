@@ -18,11 +18,13 @@
         <%= identifier.identifier %> </p>
     <% end %>
   </aside>
+  <div class="clearfix"></div>
+  <%= @book_info.volume_info.description %>
 </div>
 
-<%= render 'reviews/button',book_info: @book_info,review_info: @review %>
+<%= render 'reviews/button',book_info: @book_info,review_info: @reviews %>
 
 <% if @book_data %>
   <h3>レビュー一覧</h3>
-  <%= render 'reviews/list',reviews: @book_data.reviews %>
+  <%= render 'reviews/list',reviews: @book_data.reviews.page(params[:page]).per(5) %>
 <% end %>

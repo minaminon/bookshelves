@@ -1,11 +1,1 @@
-<h3 class="text-center"><%= @book.title %></h3>
-<div class="row">
-  <div class="col-md-4">
-    <img src="#" alt="サムネイル">
-  </aside>
-  <div class="col-md-8">
-    <p> 著者: <%= @book.author.name %> </p>
-    <p> 出版社: <%= @book.publisher %> </p>
-    <p> ISBN: <%= @book.isbn %> </p>
-  </aside>
-</div>
+<%= redirect_to book_path(@book) if @book %>
