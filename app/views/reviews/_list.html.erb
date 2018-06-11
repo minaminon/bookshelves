@@ -4,6 +4,7 @@
         <% reviews.each do |review| %>
             <div class="panel-heading">
                 <h3 class="panel-title"><%= link_to review.book.title, detail_path(review.book.code) %></h3>
+                <h6><%= review.updated_at %></h6>
             </div>
             <div class="panel-body">
                 <aside class="col-md-3">
