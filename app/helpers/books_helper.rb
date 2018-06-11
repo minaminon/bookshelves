@@ -4,7 +4,7 @@ module BooksHelper
     title=book_info.title
     subtitle=book_info.subtitle
     publisher=book_info.publisher
-    isbn_array=(book_info.industry_identifiers ? book_info.industry_identifiers : '')
+    isbn_array=(book_info.industry_identifiers ? book_info.industry_identifiers : nil ) 
     isbn=nil
     # ISBN10がない場合に限ってISBN13など
     # 取り出し時に文字列長を検証する
