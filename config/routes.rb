@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   resources :books, only: [:show, :new, :index]
   resources :authorships, only: [:create, :destroy]
   
-  resources :reviews,only: [:create,:destroy,:show]
+  resources :reviews,only: [:create,:destroy,:show,:update]
   
 end

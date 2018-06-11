@@ -21,10 +21,23 @@
   <div class="clearfix"></div>
   <%= @book_info.volume_info.description %>
 </div>
+<% if @reviews %>
+  <% color = case @reviews.status %>
+    <% when 'want' then '#0000ff' %>
+    <% when 'read' then '#00ff00' %>
+    <% when 'stop' then '#ff0000' %>
+  <% end %>
+  <% content_string = case @reviews.status %>
+    <% when 'want' then 'ほしい' %>
+    <% when 'read' then 'よんだ' %>
+    <% when 'stop' then 'やめた' %>
+  <% end %>
+  読書状況：<font color="<%= color %>"><%= content_string %></font>
+<% end %>
 
 <%= render 'reviews/button',book_info: @book_info,review_info: @reviews %>
 
 <% if @book_data %>
   <h3>レビュー一覧</h3>
-  <%= render 'reviews/list',reviews: @book_data.reviews.page(params[:page]).per(5) %>
+  <%= render 'reviews/list',reviews: @book_data.reviews.order("updated_at DESC").page(params[:page]).per(5) %>
 <% end %>

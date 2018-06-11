@@ -20,5 +20,10 @@
     </div>
     
   <% end %>
-  
+<% else %>
+  <div class="text-center">
+    検索結果が該当しませんでした</br>
+    <%= link_to '検索画面へ',new_book_path %> 
+  </div>
+
 <% end %>

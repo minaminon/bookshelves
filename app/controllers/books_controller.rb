@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  
+  before_action :require_user_logged_in,only: [:show,:new,:index,:detail]
   def show
     @book=Book.find(params[:id])
   end
@@ -11,8 +11,12 @@ class BooksController < ApplicationController
   def index
     books=Google::Apis::BooksV1::BooksService.new
     @keyword=params[:keyword]
-    @book_lists=books.list_volumes(@keyword)
-    @book_list=@book_lists #本当はここでページネーションしたい
+    unless @keyword == ''
+      @book_lists=books.list_volumes(@keyword)
+    end
+      
+    @book_list=@book_lists if @book_lists
+    
   end
   
   def detail
