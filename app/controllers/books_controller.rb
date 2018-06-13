@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     books=Google::Apis::BooksV1::BooksService.new
     @keyword=params[:keyword]
     unless @keyword == ''
-      @book_lists=books.list_volumes(@keyword)
+      @book_lists=books.list_volumes(@keyword,max_results: 40)
     end
       
     #@book_list=@book_lists if @book_lists

@@ -62,3 +62,5 @@ group :production do
 	gem 'pg','0.21.0'
 end
 
+gem 'exception_notification', :github => 'smartinez87/exception_notification'
+gem 'slack-notifier'
