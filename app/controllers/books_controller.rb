@@ -15,7 +15,8 @@ class BooksController < ApplicationController
       @book_lists=books.list_volumes(@keyword)
     end
       
-    @book_list=@book_lists if @book_lists
+    #@book_list=@book_lists if @book_lists
+    @book_list=Kaminari.paginate_array(@book_lists.items).page(params[:page]).per(5) if @book_lists
     
   end
   

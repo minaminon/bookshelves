@@ -1,5 +1,5 @@
 <% if books %>
-  <% books.items.each do |book| %>
+  <% books.each do |book| %>
     <% book_info=book.volume_info %>
     
     <div class="panel panel-default" class="clearfix">
@@ -20,6 +20,7 @@
     </div>
     
   <% end %>
+  <%= paginate @book_list %>
 <% else %>
   <div class="text-center">
     検索結果が該当しませんでした</br>
